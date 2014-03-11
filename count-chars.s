@@ -25,4 +25,20 @@ count_chars:
 	movl	ST_STRING_START_ADDRESS(%ebp), %edx
 
 count_loop_begin:
+# 获取当前字符
+	movb	(%edx), %al
+# 是否为空字符？
+	cmpb	$0, %al
+# 若为空字符则结束
+	je	count_loop_end
+# 否则，递增计数器和指针
+	incl	%ecx
+	incl	%edx
+# 返回循环起始处
+	jmp	count_loop_begin
+
+count_loop_end:
+	movl	%ecx, %eax
 	
+	popl	%ebp
+	ret

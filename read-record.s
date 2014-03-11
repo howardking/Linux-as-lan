@@ -23,7 +23,7 @@ read_record:
 	pushl	%ebx
 	movl	ST_FILEDES(%ebp), %ebx
 	movl	ST_READ_BUFFER(%ebp), %ecx
-	movl	$ST_RECORD_SIZE, %edx
+	movl	$RECORD_SIZE, %edx
 	movl	$SYS_READ, %eax
 	int	$LINUX_SYSCALL
 
